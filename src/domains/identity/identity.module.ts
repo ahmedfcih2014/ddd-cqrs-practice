@@ -50,6 +50,6 @@ import { AuthGuard } from 'src/domains/identity/presentation/guards/auth.guard';
       useClass: PasswordHashService,
     },
   ],
-  exports: [CUSTOMER_LOOKUP],
+  exports: [CUSTOMER_LOOKUP, AUTH_TOKEN_RESOLVER],
 })
 export class IdentityModule {}

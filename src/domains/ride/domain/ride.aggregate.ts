@@ -27,7 +27,6 @@ export class Ride extends AggregateRoot {
     pickupLocation: LocationVO,
     dropoffLocation: LocationVO,
     fareEstimate: MoneyVO,
-    status: RideStatus,
   ): Ride {
     const ride = new Ride(
       id,
@@ -35,7 +34,7 @@ export class Ride extends AggregateRoot {
       pickupLocation,
       dropoffLocation,
       fareEstimate,
-      status,
+      RideStatus.PENDING,
     );
     ride.addDomainEvent(new RideRequestedEvent(ride.id.value));
     return ride;

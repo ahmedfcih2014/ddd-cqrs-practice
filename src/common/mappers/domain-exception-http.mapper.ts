@@ -9,6 +9,12 @@ import { InvalidEmailException } from 'src/domains/identity/domain/exceptions/in
 import { InvalidNameException } from 'src/domains/identity/domain/exceptions/invalid-name.exception';
 import { InvalidPasswordException } from 'src/domains/identity/domain/exceptions/invalid-password.exception';
 import { UnauthenticatedException } from 'src/domains/identity/domain/exceptions/unauthenticated.exception';
+import { InvalidAddressException } from 'src/domains/ride/domain/exceptions/invalid-address.exception';
+import { InvalidAmountException } from 'src/domains/ride/domain/exceptions/invalid-amount.exception';
+import { InvalidCurrencyException } from 'src/domains/ride/domain/exceptions/invalid-currency.exception';
+import { InvalidLatitudeException } from 'src/domains/ride/domain/exceptions/invalid-lat.exception';
+import { InvalidLongitudeException } from 'src/domains/ride/domain/exceptions/invalid-lng.exception';
+import { RideNotPendingException } from 'src/domains/ride/domain/exceptions/ride-not-pending.exception';
 import { DomainException } from 'src/shared/domain-exception';
 
 const DOMAIN_EXCEPTION_HTTP_STATUS = new Map<
@@ -25,6 +31,12 @@ const DOMAIN_EXCEPTION_HTTP_STATUS = new Map<
   [InvalidCustomerIdException, HttpStatus.BAD_REQUEST],
   [CustomerAlreadyActiveException, HttpStatus.BAD_REQUEST],
   [CustomerAlreadyInactiveException, HttpStatus.BAD_REQUEST],
+  [InvalidAddressException, HttpStatus.BAD_REQUEST],
+  [InvalidLatitudeException, HttpStatus.BAD_REQUEST],
+  [InvalidLongitudeException, HttpStatus.BAD_REQUEST],
+  [InvalidAmountException, HttpStatus.BAD_REQUEST],
+  [InvalidCurrencyException, HttpStatus.BAD_REQUEST],
+  [RideNotPendingException, HttpStatus.BAD_REQUEST],
 ]);
 
 export function resolveDomainExceptionHttpStatus(

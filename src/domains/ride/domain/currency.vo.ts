@@ -1,4 +1,4 @@
-import { InvalidCurrencyException } from 'src/domains/ride/domain/exceptions/invalid-cUrrency.exception';
+import { InvalidCurrencyException } from 'src/domains/ride/domain/exceptions/invalid-currency.exception';
 
 export class CurrencyVO {
   private constructor(public readonly value: string) {}

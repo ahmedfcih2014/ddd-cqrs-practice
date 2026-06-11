@@ -11,6 +11,6 @@ export class RideIdVO extends IdVO {
   }
 
   public static generate(): RideIdVO {
-    return new IdVO(randomUUID());
+    return new RideIdVO(randomUUID());
   }
 }
