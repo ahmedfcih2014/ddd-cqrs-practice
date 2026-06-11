@@ -1,11 +1,9 @@
 import { randomUUID } from 'node:crypto';
-import { InvalidCustomerIdException } from 'src/domains/identity/domain/exceptions/invalid-customer-id.exception';
+import { IdVO } from 'src/shared/id.vo';
 
-export class CustomerId {
-  constructor(public readonly value: string) {
-    if (!CustomerId.isValid(value)) {
-      throw new InvalidCustomerIdException();
-    }
+export class CustomerId extends IdVO {
+  private constructor(value: string) {
+    super(value);
   }
 
   public static create(value: string): CustomerId {
@@ -14,11 +12,5 @@ export class CustomerId {
 
   public static generate(): CustomerId {
     return new CustomerId(randomUUID());
-  }
-
-  private static isValid(value: string): boolean {
-    return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
-      value,
-    );
   }
 }
