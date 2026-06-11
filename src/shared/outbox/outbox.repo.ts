@@ -3,7 +3,7 @@ import { randomUUID } from 'node:crypto';
 import {
   OutboxMessage,
   OutboxRepoInterface,
-} from 'src/domains/identity/application/contracts/outbox-repo.interface';
+} from 'src/shared/outbox/contracts/outbox-repo.interface';
 import { DomainEvent } from 'src/shared/domain-event';
 
 @Injectable()

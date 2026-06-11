@@ -1,10 +1,15 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { DomainEventHandler } from 'src/domains/ride/application/contracts/domain-event-handler.interface';
 import { DomainEvent } from 'src/shared/domain-event';
+import { DomainEventHandlerRegistry } from 'src/shared/outbox/domain-event-handler.registry';
+import { IntegrationEventHandler } from 'src/shared/outbox/integration-event-handler.base';
 
 @Injectable()
-export class RideRequestedIntegrationHandler implements DomainEventHandler {
+export class RideRequestedIntegrationHandler extends IntegrationEventHandler {
   private readonly logger = new Logger(RideRequestedIntegrationHandler.name);
+
+  constructor(handlerRegistry: DomainEventHandlerRegistry) {
+    super(handlerRegistry);
+  }
 
   supports(eventName: string): boolean {
     return eventName === 'RideRequested';

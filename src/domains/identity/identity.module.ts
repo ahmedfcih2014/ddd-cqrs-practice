@@ -8,17 +8,12 @@ import { ProfileHandler } from 'src/domains/identity/application/queries/profile
 import { AUTH_TOKEN_RESOLVER } from 'src/domains/identity/application/contracts/auth-token-resolver.interface';
 import { CUSTOMER_LOOKUP } from 'src/domains/identity/application/contracts/customer-lookup.interface';
 import { CUSTOMER_REPO } from 'src/domains/identity/application/contracts/customer-repo.interface';
-import { OUTBOX_REPO } from 'src/domains/identity/application/contracts/outbox-repo.interface';
-import { TRANSACTION_MANAGER } from 'src/domains/identity/application/contracts/transaction-manager.interface';
 import { CustomerLookupService } from 'src/domains/identity/infrastructure/customer-lookup.service';
 import { CustomerRepo } from 'src/domains/identity/infrastructure/customer.repo';
 import { AuthController } from 'src/domains/identity/presentation/auth.controller';
 import { CustomerController } from 'src/domains/identity/presentation/customer.controller';
 import { PASSWORD_HASH } from 'src/domains/identity/application/contracts/password-hash.interface';
 import { PasswordHashService } from 'src/domains/identity/infrastructure/password-hash.service';
-import { OutboxRepo } from 'src/domains/identity/infrastructure/outbox.repo';
-import { InMemoryTransactionManager } from 'src/domains/identity/infrastructure/in-memory-transaction.manager';
-import { OutboxRelayService } from 'src/domains/identity/infrastructure/outbox-relay.service';
 import { CustomerActivatedIntegrationHandler } from 'src/domains/identity/infrastructure/handlers/customer-activated-integration.handler';
 import { CustomerDeactivatedIntegrationHandler } from 'src/domains/identity/infrastructure/handlers/customer-deactivated-integration.handler';
 import { CustomerRegisteredIntegrationHandler } from 'src/domains/identity/infrastructure/handlers/customer-registered-integration.handler';
@@ -33,7 +28,6 @@ import { AuthGuard } from 'src/domains/identity/presentation/guards/auth.guard';
     CustomerActivatedIntegrationHandler,
     CustomerDeactivatedIntegrationHandler,
     AuthGuard,
-    OutboxRelayService,
     RegisterCustomerHandler,
     ActivateCustomerHandler,
     DeactivateCustomerHandler,
@@ -50,14 +44,6 @@ import { AuthGuard } from 'src/domains/identity/presentation/guards/auth.guard';
     {
       provide: CUSTOMER_LOOKUP,
       useClass: CustomerLookupService,
-    },
-    {
-      provide: OUTBOX_REPO,
-      useClass: OutboxRepo,
-    },
-    {
-      provide: TRANSACTION_MANAGER,
-      useClass: InMemoryTransactionManager,
     },
     {
       provide: PASSWORD_HASH,

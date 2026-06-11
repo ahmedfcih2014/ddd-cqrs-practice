@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { TransactionManagerInterface } from 'src/domains/identity/application/contracts/transaction-manager.interface';
+import { TransactionManagerInterface } from 'src/shared/outbox/contracts/transaction-manager.interface';
 
 @Injectable()
 export class InMemoryTransactionManager implements TransactionManagerInterface {

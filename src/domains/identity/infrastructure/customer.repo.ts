@@ -8,14 +8,14 @@ import { CustomerRepoInterface } from 'src/domains/identity/application/contract
 import {
   OUTBOX_REPO,
   type OutboxRepoInterface,
-} from 'src/domains/identity/application/contracts/outbox-repo.interface';
+} from 'src/shared/outbox/contracts/outbox-repo.interface';
 
 import {
   TRANSACTION_MANAGER,
   type TransactionManagerInterface,
-} from 'src/domains/identity/application/contracts/transaction-manager.interface';
+} from 'src/shared/outbox/contracts/transaction-manager.interface';
 
-import { OutboxRelayService } from 'src/domains/identity/infrastructure/outbox-relay.service';
+import { OutboxRelayService } from 'src/shared/outbox/outbox-relay.service';
 
 @Injectable()
 export class CustomerRepo implements CustomerRepoInterface {
